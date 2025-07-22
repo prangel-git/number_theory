@@ -1,0 +1,10 @@
+# Configuration files
+.venv
+.vscode
+
+# MacOS files
+.DS_Store
+
+# Pytest files
+.pytest_cache
+__pycache__
