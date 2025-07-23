@@ -189,18 +189,20 @@ def egyptian_to_numerator_denominator(egyptian_representation):
     denominator = den0 * den1
     return simplify(numerator, denominator)
 
-def generate_seed():
-    i = 2; j = 1
+def generate_pythagorean_triple_seed():
+    v = 3; u = 1
     while True:
-        yield i, j
-        i = i - 1; j = j + 1
-        if i <= j:
-            i += j; j = 1
+        if gcd(v, u) == 1:
+            yield u, v
+        v = v - 1; u = u + 1
+
+        while (v * v - u * u < 2 * u * v):
+            v = v + u; u = 1
 
 def pythagorean_triples():
-    pairs = generate_seed() 
-    for u,v in pairs:
-        a = u * u - v * v
+    pairs = generate_pythagorean_triple_seed() 
+    for u, v in pairs:
+        a = v * v - u * u
         b = 2 * u * v
         c = u * u + v * v
         yield a, b, c
