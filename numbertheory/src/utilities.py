@@ -229,11 +229,15 @@ def generate_pythagorean_triple_seed():
             u = 1
 
 
-def pythagorean_triples():
+def pythagorean_generator_and_triple():
     pairs = generate_pythagorean_triple_seed()
     for u, v in pairs:
         a = v * v - u * u
         b = 2 * u * v
         c = u * u + v * v
-        common_factor = gcd(a, b)
-        yield a // common_factor, b // common_factor, c // common_factor
+        yield (u, v), (a, b, c)
+
+
+def pythagorean_triples():
+    for _, triple in pythagorean_generator_and_triple():
+        yield triple
