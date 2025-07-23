@@ -206,7 +206,7 @@ def test_pythagorean_triples():
 
 
 def test_generate_natural_numbers_pairs():
-    pairs = generate_pythagorean_triple_seed()
+    pairs = pythagorean_seed()
     assert (1, 2) == next(pairs)
     assert (1, 4) == next(pairs)
     assert (2, 3) == next(pairs)

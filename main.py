@@ -6,7 +6,7 @@ from math import isqrt
 def testing_pythagorean_tripes():
     n = 30
 
-    for (u, v), _ in zip(generate_pythagorean_triple_seed(), range(n)):
+    for (u, v), _ in zip(pythagorean_seed(), range(n)):
         a = v * v - u * u
         b = 2 * u * v
         c = v * v + u * u

@@ -215,7 +215,7 @@ def egyptian_to_numerator_denominator(egyptian_representation):
     return simplify(numerator, denominator)
 
 
-def generate_pythagorean_triple_seed():
+def pythagorean_seed():
     u = 1
     v = 2
     while True:
@@ -229,8 +229,8 @@ def generate_pythagorean_triple_seed():
             u = 1
 
 
-def pythagorean_generator_and_triple():
-    pairs = generate_pythagorean_triple_seed()
+def pythagorean_seed_and_triple():
+    pairs = pythagorean_seed()
     for u, v in pairs:
         a = v * v - u * u
         b = 2 * u * v
@@ -239,5 +239,5 @@ def pythagorean_generator_and_triple():
 
 
 def pythagorean_triples():
-    for _, triple in pythagorean_generator_and_triple():
+    for _, triple in pythagorean_seed_and_triple():
         yield triple
