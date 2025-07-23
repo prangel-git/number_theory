@@ -29,6 +29,9 @@ def print_2_14():
         print(f"sides {a}, {b}, {c}, diagonals {d0}, {d1}, {d2}")
     # sides 572, 1521, 3120, diagonals 1625, 3172, 3471
 
+    print(list(find_sides_from_diagonal(longest_side_diagonal)))
+    # [(204, 3465), (1335, 3204), (1521, 3120), (2295, 2604)]
+
 
 def main():
     print_2_14()
