@@ -1,3 +1,4 @@
+from numbertheory.src.utilities import *
 from math import isqrt
 
 
@@ -46,4 +47,16 @@ def is_euler_brick(a, b, c):
 
 
 def exercise2_14(bound=3471):
-    return 0, 0, 0
+    a0, b0, c0 = (0, 0, 0)
+    diagonal0 = 0
+    for a in range(1, bound):
+        for b in range(a + 1, bound):
+            if is_square(a * a + b * b):
+                for c in range(b + 1, bound):
+                    diagonal = isqrt(b * b + c * c)
+                    if diagonal > bound:
+                        break
+                    if is_euler_brick(a, b, c) and diagonal > diagonal0:
+                        a0, b0, c0 = (a, b, c)
+
+    return a0, b0, c0

@@ -39,5 +39,5 @@ def test_is_euler_brick():
 
 
 def test_exercise2_14():
-    a, b, c = exercise2_14()
+    a, b, c = exercise2_14(100)
     assert is_euler_brick(a, b, c)
