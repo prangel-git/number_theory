@@ -27,3 +27,17 @@ def test_exercise2_13():
 
 def test_exercise2_13_answer():
     assert 19600 == exercise2_13()
+
+
+def test_is_euler_brick():
+    assert is_euler_brick(44, 117, 240)
+    assert is_euler_brick(85, 132, 720)
+    assert is_euler_brick(160, 231, 792)
+    assert not is_euler_brick(43, 117, 240)
+    assert not is_euler_brick(85, 482, 693)
+    assert not is_euler_brick(160, 231, 790)
+
+
+def test_exercise2_14():
+    a, b, c = exercise2_14()
+    assert is_euler_brick(a, b, c)

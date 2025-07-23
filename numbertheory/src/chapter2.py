@@ -32,3 +32,18 @@ def exercise2_13(bound=1000):
         if is_square(tetahedral):
             return tetahedral
     return 0
+
+
+def is_euler_brick(a, b, c):
+    if not is_square(a * a + b * b):
+        return False
+    if not is_square(a * a + c * c):
+        return False
+    if not is_square(b * b + c * c):
+        return False
+
+    return True
+
+
+def exercise2_14(bound=3471):
+    return 0, 0, 0
