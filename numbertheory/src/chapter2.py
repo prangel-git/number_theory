@@ -60,3 +60,31 @@ def exercise2_14(bound=3471):
                         a0, b0, c0 = (a, b, c)
 
     return a0, b0, c0
+
+
+def perimeter_to_number_of_triples(bound=1000):
+    number_of_triples = dict()
+
+    for seed, triple in pythagorean_seed_and_triple():
+        (u, v) = seed
+        (a, b, c) = triple
+        perimeter = a + b + c
+
+        if perimeter > bound and u == 1:
+            break
+
+        for p in range(perimeter, bound + 1, perimeter):
+            number_of_triples[p] = number_of_triples.get(p, 0) + 1
+
+    return number_of_triples
+
+
+def exercise2_16(bound=1000):
+    max_num_triples = 0
+    best_perimeter = 0
+    for perimeter, number_triples in perimeter_to_number_of_triples().items():
+        if max_num_triples < number_triples:
+            best_perimeter = perimeter
+            max_num_triples = number_triples
+
+    return best_perimeter

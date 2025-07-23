@@ -41,3 +41,12 @@ def test_is_euler_brick():
 def test_exercise2_14():
     a, b, c = exercise2_14(100)
     assert is_euler_brick(a, b, c)
+
+
+def test_perimeter_to_number_of_triples():
+    number_of_triples = perimeter_to_number_of_triples()
+    assert number_of_triples[120] == 3
+
+
+def test_exercise2_16():
+    assert exercise2_16() == 840
