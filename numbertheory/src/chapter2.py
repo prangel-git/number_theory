@@ -80,11 +80,5 @@ def perimeter_to_number_of_triples(bound=1000):
 
 
 def exercise2_16(bound=1000):
-    max_num_triples = 0
-    best_perimeter = 0
-    for perimeter, number_triples in perimeter_to_number_of_triples().items():
-        if max_num_triples < number_triples:
-            best_perimeter = perimeter
-            max_num_triples = number_triples
-
-    return best_perimeter
+    perimeter_triples = perimeter_to_number_of_triples()
+    return max(perimeter_triples, key=perimeter_triples.get)  # type: ignore
