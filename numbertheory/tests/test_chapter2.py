@@ -38,9 +38,15 @@ def test_is_euler_brick():
     assert not is_euler_brick(160, 231, 790)
 
 
+def test_find_sides_from_diagonal():
+    assert [(3, 4)] == list(find_sides_from_diagonal(5))
+
+
 def test_exercise2_14():
-    a, b, c = exercise2_14(100)
-    assert is_euler_brick(a, b, c)
+    longest_face_diagonal = 267
+    for a, b, c in exercise2_14(longest_face_diagonal):
+        assert is_euler_brick(a, b, c)
+        assert b * b + c * c == longest_face_diagonal * longest_face_diagonal
 
 
 def test_perimeter_to_number_of_triples():

@@ -46,20 +46,22 @@ def is_euler_brick(a, b, c):
     return True
 
 
-def exercise2_14(bound=3471):
-    a0, b0, c0 = (0, 0, 0)
-    diagonal0 = 0
-    for a in range(1, bound):
-        for b in range(a + 1, bound):
-            if is_square(a * a + b * b):
-                for c in range(b + 1, bound):
-                    diagonal = isqrt(b * b + c * c)
-                    if diagonal > bound:
-                        break
-                    if is_euler_brick(a, b, c) and diagonal > diagonal0:
-                        a0, b0, c0 = (a, b, c)
+def find_sides_from_diagonal(diagonal):
+    d_square = diagonal * diagonal
+    a = 1
+    b = isqrt(d_square - a * a)
+    while a < b:
+        if a * a + b * b == d_square:
+            yield a, b
+        a += 1
+        b = isqrt(d_square - a * a)
 
-    return a0, b0, c0
+
+def exercise2_14(longest_diagonal=3471):
+    for b, c in find_sides_from_diagonal(longest_diagonal):
+        for a in range(1, b):
+            if is_euler_brick(a, b, c):
+                yield a, b, c
 
 
 def perimeter_to_number_of_triples(bound=1000):

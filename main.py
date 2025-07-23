@@ -20,18 +20,18 @@ def print_2_13():
 
 
 def print_2_14():
-    bound = 3471
-    a, b, c = exercise2_14(bound)
-    d0 = isqrt(a * a + b * b)
-    d1 = isqrt(a * a + c * c)
-    d2 = isqrt(b * b + c * c)
+    longest_side_diagonal = 3471
+    for a, b, c in exercise2_14(longest_side_diagonal):
+        d0 = isqrt(a * a + b * b)
+        d1 = isqrt(a * a + c * c)
+        d2 = isqrt(b * b + c * c)
 
-    print(f"sides {a}, {b}, {c}, diagonals {d0}, {d1}, {d2}")
-    # sides 2160, 2268, 2475, diagonals 3132, 3285, 3357
+        print(f"sides {a}, {b}, {c}, diagonals {d0}, {d1}, {d2}")
+    # sides 572, 1521, 3120, diagonals 1625, 3172, 3471
 
 
 def main():
-    testing_pythagorean_tripes()
+    print_2_14()
 
 
 if __name__ == "__main__":
