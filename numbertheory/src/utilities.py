@@ -216,16 +216,16 @@ def egyptian_to_numerator_denominator(egyptian_representation):
 
 
 def generate_pythagorean_triple_seed():
-    v = 3
     u = 1
+    v = 2
     while True:
         if gcd(v, u) == 1:
             yield u, v
-        v = v - 1
         u = u + 1
+        v = v - 1
 
-        while v * v - u * u < 2 * u * v:
-            v = v + u
+        if u >= v:
+            v = v + u + 1
             u = 1
 
 

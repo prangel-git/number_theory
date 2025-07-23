@@ -19,7 +19,7 @@ def print_2_13():
     print(exercise2_13())
 
 
-def main():
+def print_2_14():
     bound = 3471
     a, b, c = exercise2_14(bound)
     d0 = isqrt(a * a + b * b)
@@ -28,6 +28,10 @@ def main():
 
     print(f"sides {a}, {b}, {c}, diagonals {d0}, {d1}, {d2}")
     # sides 2160, 2268, 2475, diagonals 3132, 3285, 3357
+
+
+def main():
+    testing_pythagorean_tripes()
 
 
 if __name__ == "__main__":
