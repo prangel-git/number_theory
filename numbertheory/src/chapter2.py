@@ -81,4 +81,4 @@ def perimeter_to_number_of_triples(bound=1000):
 
 def exercise2_16(bound=1000):
     perimeter_triples = perimeter_to_number_of_triples()
-    return max(perimeter_triples, key=perimeter_triples.get)  # type: ignore
+    return max(perimeter_triples, key=lambda k: perimeter_triples[k])
