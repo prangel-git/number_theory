@@ -21,31 +21,69 @@ def primes():
 
     increment_value = [2, 4]
 
-    current_value = 5
     crossed_numbers = dict()
 
+    current_value = 5
     for increment in cycle(increment_value):
         if current_value in crossed_numbers:
-            step = crossed_numbers[current_value]
-            next = current_value + step
-            while next in crossed_numbers:
-                next += step
-            crossed_numbers[next] = step
-            del crossed_numbers[current_value]
+            _update_crossed_numbers(current_value, crossed_numbers)
         else:
-            crossed_numbers[current_value * current_value] = 6 * current_value
-            crossed_numbers[current_value * (current_value + increment)] = (
-                6 * current_value
-            )
+            _cross_next_multiples(current_value, increment, crossed_numbers)
             yield current_value
 
         current_value += increment
+
+
+def primes_up_to(bound):
+    sqrt_bound = isqrt(bound)
+
+    yield 2
+    yield 3
+
+    increment_value = [2, 4]
+
+    crossed_numbers = dict()
+
+    current_value = 5
+    for increment in cycle(increment_value):
+        if current_value > bound:
+            break
+        if current_value in crossed_numbers:
+            _update_crossed_numbers(current_value, crossed_numbers)
+        else:
+            if current_value <= sqrt_bound:
+                _cross_next_multiples(current_value, increment, crossed_numbers)
+            yield current_value
+
+        current_value += increment
+
+
+def _update_crossed_numbers(number_to_update, crossed_numbers_dict):
+    step = crossed_numbers_dict[number_to_update]
+    next = number_to_update + step
+    while next in crossed_numbers_dict:
+        next += step
+    crossed_numbers_dict[next] = step
+    del crossed_numbers_dict[number_to_update]
+
+
+def _cross_next_multiples(current_value, increment, crossed_numbers):
+    crossed_numbers[current_value * current_value] = 6 * current_value
+    crossed_numbers[current_value * (current_value + increment)] = 6 * current_value
 
 
 def cycle(numbers):
     while True:
         for num in numbers:
             yield num
+
+
+def sequence_from_cycle(initial_value, numbers):
+    current_value = initial_value
+    while True:
+        for num in numbers:
+            yield current_value
+            current_value += num
 
 
 def gcd_extended(a, b):
@@ -101,7 +139,7 @@ def prime_factorization(n):
     factors = dict()
     if n <= 1:
         return factors
-    for possible_factors in primes():
+    for possible_factors in primes_up_to(n):
         while n % possible_factors == 0:
             factors[possible_factors] = factors.get(possible_factors, 0) + 1
             n //= possible_factors
@@ -252,10 +290,8 @@ def is_prime(n):
         return True
 
     max_factor = isqrt(n)
-    # TODO: Generate only primes up to sqrt(n) to improve performance
-    for possible_factor in primes():
-        if possible_factor > max_factor:
-            break
+
+    for possible_factor in primes_up_to(max_factor):
         if n % possible_factor == 0:
             return False
 
@@ -265,9 +301,7 @@ def is_prime(n):
 # TODO: Improve performance. First by generating only primes up to sqrt(n). Then by Legendre formula
 def count_primes(n):
     count = 0
-    for p in primes():
-        if p > n:
-            break
+    for p in primes_up_to(n):
         count += 1
 
     return count
