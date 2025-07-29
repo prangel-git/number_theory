@@ -226,3 +226,15 @@ def test_is_prime():
     assert is_prime(31 * 31) == False
     assert is_prime(27644437) == True
     assert is_prime(27644437 * 877) == False
+
+
+def test_count_primes():
+    assert count_primes(10**2) == 25
+    assert count_primes(10**3) == 168
+    # assert count_primes(10**8) == 5_761_455
+
+
+def test_padic_valuation():
+    assert padic_valuation(2, 2**18) == 18
+    assert padic_valuation(2, (2**18) * 3 * 5) == 18
+    assert padic_valuation(5, 2 * 3 * 5) == 1

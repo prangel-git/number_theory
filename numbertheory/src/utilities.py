@@ -252,6 +252,7 @@ def is_prime(n):
         return True
 
     max_factor = isqrt(n)
+    # TODO: Generate only primes up to sqrt(n) to improve performance
     for possible_factor in primes():
         if possible_factor > max_factor:
             break
@@ -259,3 +260,22 @@ def is_prime(n):
             return False
 
     return True
+
+
+# TODO: Improve performance. First by generating only primes up to sqrt(n). Then by Legendre formula
+def count_primes(n):
+    count = 0
+    for p in primes():
+        if p > n:
+            break
+        count += 1
+
+    return count
+
+
+def padic_valuation(p, n):
+    count = 0
+    while n % p == 0:
+        count += 1
+        n //= p
+    return count
