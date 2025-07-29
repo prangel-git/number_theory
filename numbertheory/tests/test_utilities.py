@@ -212,3 +212,17 @@ def test_generate_natural_numbers_pairs():
     assert (2, 3) == next(pairs)
     assert (1, 6) == next(pairs)
     assert (2, 5) == next(pairs)
+
+
+def test_is_prime():
+    assert is_prime(1) == False
+    assert is_prime(2) == True
+    assert is_prime(3) == True
+    assert is_prime(4) == False
+    assert is_prime(5) == True
+    assert is_prime(6) == False
+    assert is_prime(7) == True
+    assert is_prime(31) == True
+    assert is_prime(31 * 31) == False
+    assert is_prime(27644437) == True
+    assert is_prime(27644437 * 877) == False

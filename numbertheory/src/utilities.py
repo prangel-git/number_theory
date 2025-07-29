@@ -1,4 +1,4 @@
-from math import comb
+from math import comb, isqrt
 
 from functools import lru_cache
 
@@ -241,3 +241,21 @@ def pythagorean_seed_and_triple():
 def pythagorean_triples():
     for _, triple in pythagorean_seed_and_triple():
         yield triple
+
+
+def is_prime(n):
+    if n < 0:
+        return is_prime(-n)
+    elif n == 0 or n == 1:
+        return False
+    elif n == 2 or n == 3:
+        return True
+
+    max_factor = isqrt(n)
+    for possible_factor in primes():
+        if possible_factor > max_factor:
+            break
+        if n % possible_factor == 0:
+            return False
+
+    return True
