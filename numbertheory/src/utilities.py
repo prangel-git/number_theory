@@ -149,6 +149,20 @@ def prime_factorization(n):
     return factors
 
 
+def factorize(n):
+    factors = dict()
+    if n <= 1:
+        return factors
+    for possible_factors in range(2, n + 1):
+        while n % possible_factors == 0:
+            factors[possible_factors] = factors.get(possible_factors, 0) + 1
+            n //= possible_factors
+        if n == 1:
+            break
+
+    return factors
+
+
 def divisors(n):
     if n == 0:
         return []
