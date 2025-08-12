@@ -8,7 +8,7 @@ from math import isqrt, factorial
 
 
 def main():
-    exercise_4_58()
+    poly_roots = exercise_4_57_3()
 
 
 if __name__ == "__main__":

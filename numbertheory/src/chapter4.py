@@ -1,4 +1,4 @@
-def exercise_4_47():
+def exercise_4_57():
     polynomial = lambda x: (x**2 - 2 * x - 4) % 11
     print(f"Polynomial({52})={polynomial(52)}")
     print(f"Polynomial({82})={polynomial(82)}")
@@ -16,6 +16,22 @@ def exercise_4_47():
     polynomial = lambda x: 3 * x * (x - 3) % 21
     pol_values = [polynomial(x) for x in range(21)]
     print(pol_values)
+
+
+def exercise_4_57_3():
+    n = 21
+
+    polynomial_to_roots = dict()
+    for a0 in range(n):
+        for a1 in range(n):
+            polynomial = lambda x: (x**2 + a1 * x + a0 * x) % n
+            roots = tuple([x for x in range(n) if polynomial(x) == 0])
+
+            polynomial_to_roots[(a1, a0)] = roots
+            if len(roots) > 2:
+                print(f"roots(x ** 2+ {a1} x + {a0}) = {roots}")
+
+    return polynomial_to_roots
 
 
 def exercise_4_58():
