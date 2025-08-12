@@ -238,3 +238,9 @@ def test_padic_valuation():
     assert padic_valuation(2, 2**18) == 18
     assert padic_valuation(2, (2**18) * 3 * 5) == 18
     assert padic_valuation(5, 2 * 3 * 5) == 1
+
+
+def test_primitive_roots_of_23():
+    expected = [5, 7, 10, 11, 14, 15, 17, 19, 20, 21]
+    calculated = [k for k in primitive_roots(23)]
+    assert expected == calculated

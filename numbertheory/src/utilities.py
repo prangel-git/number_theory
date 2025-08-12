@@ -327,3 +327,22 @@ def padic_valuation(p, n):
         count += 1
         n //= p
     return count
+
+
+def primitive_roots(n):
+    totient_p = totient(n)
+    factors = factorize(totient_p)
+
+    for candidate in range(2, n):
+        if _is_primitive_root(n, totient_p, factors, candidate):
+            yield candidate
+
+
+def _is_primitive_root(n, totient_p, factors, candidate):
+
+    is_primitive = True
+    for factor in factors:
+        if pow(candidate, totient_p // factor, n) == 1:
+            is_primitive = False
+            break
+    return is_primitive
