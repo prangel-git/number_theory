@@ -244,3 +244,24 @@ def test_primitive_roots_of_23():
     expected = [5, 7, 10, 11, 14, 15, 17, 19, 20, 21]
     calculated = [k for k in primitive_roots(23)]
     assert expected == calculated
+
+
+def test_legendre_symbol_one_on_p():
+    p = 7
+    assert legendre_symbol(1, p) == 1
+
+
+def test_legendre_symbol_negative_one_on_p():
+    assert legendre_symbol(-1, 5) == 1
+    assert legendre_symbol(-1, 3) == -1
+
+
+def test_legendre_symbol_two_on_p():
+    assert legendre_symbol(2, 7) == 1
+    assert legendre_symbol(2, 17) == 1
+    assert legendre_symbol(2, 3) == -1
+    assert legendre_symbol(2, 19) == -1
+
+
+def test_legendre_symbol_q_large_on_p_small():
+    assert legendre_symbol(11, 3) == -1

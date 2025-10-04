@@ -346,3 +346,24 @@ def _is_primitive_root(n, totient_p, factors, candidate):
             is_primitive = False
             break
     return is_primitive
+
+
+def legendre_symbol(a, p):
+    """
+    if a == 1:
+        return 1
+    if a == -1:
+        if p % 4 == 1:
+            return 1
+        else:
+            return -1
+    if a == 2:
+        if p % 8 == 1 or p % 8 == 7:
+            return 1
+        else:
+            return -1
+    """
+    if a % p == 0:
+        return 0
+
+    return 2 * (pow(a, (p - 1) // 2, p) == 1) - 1
